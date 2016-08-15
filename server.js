@@ -37,6 +37,20 @@ card.findOne({}, function( err, c ){
 		console.log("Cards already loaded.");
 	}
 });
+
+io.on('connection', function(socket){
+	
+	console.log('a user connected');
+	socket.on('disconnect', function(){
+		console.log('user disconnected');
+	});
+	socket.on('lobby', function(){
+		console.log("ENTERING LOBBY");
+	});
+	socket.on('tutorial', function(){
+		console.log("BEGINNING TUTORIAL");
+	});
+});
 // card.find({}, function(err, users){
 // 	console.log(users)
 // });
