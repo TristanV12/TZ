@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Lobby</title>
+</head>
+<body>
+
+<h1>Check out this dank lobby!</h1>
+<p>Select a room to enter or create your own!</p>
+
+      <button align="center" onclick="create()">Create Room</button>
+	  
+<script src="/socket.io/socket.io.js"></script>
+	<script>
+	  var socket = io();
+	  function create(){
+		socket.emit('CreateRoom');
+		return false;
+	  }
+	</script>
+
+</body>
+</html>

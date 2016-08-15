@@ -50,6 +50,10 @@ io.on('connection', function(socket){
 	socket.on('tutorial', function(){
 		console.log("BEGINNING TUTORIAL");
 	});
+	socket.on('CreateRoom', function(){
+		console.log("Creating Room");
+		console.log("Navigating to Room");
+	});
 });
 // card.find({}, function(err, users){
 // 	console.log(users)
