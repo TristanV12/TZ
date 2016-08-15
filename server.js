@@ -14,6 +14,7 @@ cards = card.findOne({}, function( err, c=null ){
 		};
 	}
 });
+card.find({}, function(err, users){
 	console.log(users)
 });
 
