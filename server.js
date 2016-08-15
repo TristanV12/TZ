@@ -6,7 +6,8 @@ var io       = require('socket.io')(http);
 mongoose.connect('mongodb://localhost/TZ/mongo');
 
 //populate database with cards if it is not already populated
-var card = mongoose.model('card', { id: Number, value: Number, suit: Number}); //card variable
+var card = mongoose.model('card', { id: Number, value: Number, suit: Number }); //card variable
+var game = mongoose.model('game', { id: String }); //game variable
 
 // card.remove({}, function(err) { 
 //    console.log('collection removed') 
@@ -46,6 +47,26 @@ app.use(express.static('public'));
 
 app.get('/', function(req, res){
 	res.sendFile('index.html');
+});
+
+app.get('/game/new_game/:game_id', function(req, res){
+
+	card.findOne({ id: req.params.game_id }, function( err, c ){
+		if(c == null){ //check if game already exists
+			console.log("Creating game...");
+			var new_game = new game({ id: req.params.game_id });
+			new_game.save();
+			console.log("Created");
+			res.redirect("/game/" + req.params.game_id);
+		}else{
+			console.log("Error: game already exists");
+		}
+	});
+
+});
+
+app.get('/game/:game_id', function(req, res){
+	res.sendFile('game.html');
 });
 
 http.listen(3000, function(){
