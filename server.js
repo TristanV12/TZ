@@ -93,6 +93,9 @@ app.get('/lobby', function(req, res){
 });
 
 //navigating to the tutorial
+app.get('/tutorial', function(req, res){
+	res.sendFile(__dirname+'/public/tutorial.html');
+});
 
 http.listen(3000, function(){
 	console.log('TZ now running');
