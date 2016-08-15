@@ -4,6 +4,20 @@ var mongoose = require('mongoose');
 var io       = require('socket.io')(http);
 mongoose.connect('mongodb://localhost/TZ/mongo');
 
+//populate database with cards if it is not already populated
+var card = mongoose.model('card', { id: Number, value: Number, suit: Number}); //card variable
+cards = card.findOne({}, function( err, c=null ){
+	if(c == null){
+		for (var i = 0; i < 52; ++i) {
+			var new_card = new card({ id: i, value: (i % 13) + 2, suit: i % 4 });
+			new_card.save();
+		};
+	}
+});
+	console.log(users)
+});
+
+
 app.get('/', function(req, res){
 	res.send('<h1>Hello world</h1>');
 });
