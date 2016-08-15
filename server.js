@@ -84,7 +84,7 @@ app.get('/game/new_game/:game_id', function(req, res){
 });
 
 app.get('/game/:game_id', function(req, res){
-	res.sendFile('game.html');
+	res.sendFile(__dirname + '/public/game.html');
 });
 
 http.listen(3000, function(){
