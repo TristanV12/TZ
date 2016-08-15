@@ -8,13 +8,17 @@
 <h1>My First Heading</h1>
 <p>My first paragraph.</p>
 <a href="game/new_game/abcdef">link</a>
-
+		<a href="lobby">
       <button align="center" onclick="lobby()">LOBBY</button>
+	  </a>
+	  <a href="tutorial">
 	  <button align="center" onclick="tutorial()">TUTORIAL</button>
+	  </a>
 
 
 <script src="/socket.io/socket.io.js"></script>
 	<script>
+	//functions for emitting signals for the lobby and tutorial 
 	  var socket = io();
 	  function lobby(){
 		socket.emit('lobby');

@@ -87,6 +87,13 @@ app.get('/game/:game_id', function(req, res){
 	res.sendFile(__dirname + '/public/game.html');
 });
 
+//navigating to the lobby
+app.get('/lobby', function(req, res){
+	res.sendFile(__dirname + '/public/lobby.html');
+});
+
+//navigating to the tutorial
+
 http.listen(3000, function(){
 	console.log('TZ now running');
 	console.log('listening on *:3000');
