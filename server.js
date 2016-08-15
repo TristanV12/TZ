@@ -12,6 +12,10 @@ cards = card.findOne({}, function( err, c=null ){
 			var new_card = new card({ id: i, value: (i % 13) + 2, suit: i % 4 });
 			new_card.save();
 		};
+		var new_card = new card({ id: 53, value: 15, suit: 4 });
+		new_card.save();
+		var new_card = new card({ id: 54, value: 15, suit: 4 });
+		new_card.save();
 	}
 });
 card.find({}, function(err, users){
