@@ -5,6 +5,15 @@ var mongoose = require('mongoose');
 var io       = require('socket.io')(http);
 mongoose.connect('mongodb://localhost/TZ/mongo');
 
+//make new mongoose schema for username and password
+var userSchema = new mongoose.Schema({
+	username: String,
+	password: String	
+});
+//making a model out of the schema
+var User = mongoose.model('User', userSchema);
+
+
 //populate database with cards if it is not already populated
 var card = mongoose.model('card', { id: Number, value: Number, suit: Number }); //card variable
 var game = mongoose.model('game', { id: String }); //game variable
@@ -96,7 +105,30 @@ app.get('/tutorial', function(req, res){
 	res.sendFile(__dirname+'/public/tutorial.html');
 });
 
-http.listen(3000, function(){
+
+//go to the login page
+app.get('/login', function(req, res){
+	res.sendFile(__dirname + "/public/login.html");
+});
+
+//register new user and send them to the lobby
+app.get('/registerUser', function(req, res){
+	
+	var newUser = new User({ username: req.query.username, password: req.query.password});
+	newUser.save();
+	
+	//ignore this
+	result = {
+		username: req.query.username,
+		password: req.query.password
+	};
+	
+	console.log(result);
+	res.sendFile(__dirname + '/public/lobby.html');
+});
+
+//listen for users
+var server = http.listen(3000, function(){
 	console.log('TZ now running');
 	console.log('listening on *:3000');
 });
