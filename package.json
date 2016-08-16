@@ -1,6 +1,19 @@
 {
-	"name": "TZ",
-	"version": "0.0.1",
-	"description": "Game",
-	"dependencies": {}
+  "name": "TZ",
+  "version": "0.0.1",
+  "description": "Game",
+  "dependencies": {
+    "express": "^4.14.0",
+    "mongoose": "^4.5.9"
+  },
+  "contributors": [
+    {
+      "name": "Tristan V.",
+      "email": "email@gmail.com"
+    },
+    {
+      "name": "Ferrohound",
+      "email": "ferrohound@gmail.com"
+    }
+  ]
 }

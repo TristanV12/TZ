@@ -12,7 +12,6 @@ var game = mongoose.model('game', { id: String }); //game variable
 // card.remove({}, function(err) { 
 //    console.log('collection removed') 
 // });
-
 card.findOne({}, function( err, c ){
 	if(c == null){ //check if cards have been initialized
 		console.log("Running setup...");
