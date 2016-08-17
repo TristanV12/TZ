@@ -112,7 +112,7 @@ app.get('/login', function(req, res){
 });
 
 //register new user and send them to the lobby
-app.get('/registerUser', function(req, res){
+app.post('/registerUser', function(req, res){
 	
 	var newUser = new User({ username: req.query.username, password: req.query.password});
 	newUser.save();
