@@ -1,7 +1,7 @@
 var express  = require('express'),
 	app      = express(),
 	http     = require('http').Server(app),
-	httpRoutes = require('./http'),
+	httpRoutes = require('./routes/http'),
 	socketRoutes = require('./socket'),
 	mongoose = require('mongoose'),
 	io       = require('socket.io')(http),
@@ -62,7 +62,7 @@ card.findOne({}, function( err, c ){
 app.use(express.static('public'));
 
 // Attach routes
-httpRoutes.attach(app, DB);
+httpRoutes.attach(app, DB, __dirname);
 socketRoutes.attach(io, DB);
 
 //listen for users

@@ -4,11 +4,11 @@ var DB = null;
 User = null;
 
 var home = function(req, res){
-	res.sendFile('index.html');
+	res.sendFile(PATH + '/public/index.html');
 };
 
 var lobby = function(req, res){
-	res.sendFile(__dirname + '/public/lobby.html');
+	res.sendFile(PATH + '/public/lobby.html');
 };
 
 var makeGame = function(req, res){
@@ -26,15 +26,15 @@ var makeGame = function(req, res){
 };
 
 var game = function(req, res){
-	res.sendFile(__dirname + '/public/game.html');
+	res.sendFile(PATH + '/public/game.html');
 };
 
 var tutorial = function(req, res){
-	res.sendFile(__dirname+'/public/tutorial.html');
+	res.sendFile(PATH + '/public/tutorial.html');
 };
 
 var login = function(req, res){
-	res.sendFile(__dirname + "/public/login.html");
+	res.sendFile(PATH + "/public/login.html");
 };
 
 var register = function (req, res){
@@ -49,7 +49,7 @@ var register = function (req, res){
 	};
 	
 	console.log(result);
-	res.sendFile(__dirname + '/public/lobby.html');
+	res.sendFile(PATH + '/public/lobby.html');
 };
 
 var invalid = function(req, res) {
@@ -59,9 +59,9 @@ var invalid = function(req, res) {
 /**
  * Attach route handlers to the app
  */
-exports.attach = function(app, db) {
+exports.attach = function(app, db, dirname) {
 	DB = db;
-	User = user;
+	PATH = dirname;
 	app.get('/',         home);
 	app.get('/game/:id', game);
 	app.get('/login', login);
